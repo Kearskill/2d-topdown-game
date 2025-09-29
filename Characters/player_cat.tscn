@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://535eswpfbvab"]
+[gd_scene load_steps=28 format=3 uid="uid://535eswpfbvab"]
 
 [ext_resource type="Texture2D" uid="uid://ckvlw2i8fgs4d" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_k8dsg"]
 [ext_resource type="Script" uid="uid://c0khixf48i3bx" path="res://Characters/player_cat.gd" id="1_u0lhy"]
@@ -195,7 +195,30 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0lhy"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hhb2n"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gx6m4"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twab1"]
+animation = &"walk_up"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0nvui"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u0lhy")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_hhb2n")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_gx6m4")
+blend_point_2/pos = Vector2(0, 1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_twab1")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hx6oh"]
 advance_mode = 0
@@ -235,4 +258,4 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_3b306")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.0063796043, 0.29103148)
-parameters/Walk/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(-0.2551834, 0.20224214)
