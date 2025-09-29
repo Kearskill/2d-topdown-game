@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://5vy7q57duw01"]
+
+[ext_resource type="Script" uid="uid://bmvo1xjuo008o" path="res://Characters/cow.gd" id="1_o34qh"]
+[ext_resource type="Texture2D" uid="uid://bhc4y45ysc2fs" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_6sm7e"]
+
+[sub_resource type="Animation" id="Animation_tk8lp"]
+resource_name = "idle_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_2lff8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q563c"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vot6"]
+_data = {
+&"RESET": SubResource("Animation_2lff8"),
+&"idle_right": SubResource("Animation_tk8lp"),
+&"walk_right": SubResource("Animation_q563c")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o34qh"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mxgx8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_o34qh")
+blend_point_0/pos = Vector2(0, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6sm7e"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ytdmk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6sm7e")
+blend_point_0/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ingpx"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xox6f"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4soil"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f5qva"]
+states/idle_right/node = SubResource("AnimationNodeBlendSpace2D_mxgx8")
+states/idle_right/position = Vector2(411, 103)
+states/walk_right/node = SubResource("AnimationNodeBlendSpace2D_ytdmk")
+states/walk_right/position = Vector2(609, 101)
+transitions = ["idle_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_ingpx"), "walk_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_xox6f"), "Start", "idle_right", SubResource("AnimationNodeStateMachineTransition_4soil")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o34qh"]
+size = Vector2(16, 6)
+
+[node name="Cow" type="CharacterBody2D"]
+script = ExtResource("1_o34qh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6sm7e")
+hframes = 3
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2vot6")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_f5qva")
+anim_player = NodePath("../AnimationPlayer")
+parameters/idle_right/blend_position = Vector2(0.83891547, 0.13296711)
+parameters/walk_right/blend_position = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 10)
+shape = SubResource("RectangleShape2D_o34qh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
