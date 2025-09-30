@@ -28,6 +28,10 @@ func _physics_process(_delta):
 	# Move and Slide function usess velocitiy of character body to move character on map
 	move_and_slide()
 	
+	# If near NPC and player presses interact
+	#if Input.is_action_just_pressed("accept") and current_npc:
+		#DialogueManager.start_dialogue(current_npc.npc_id)
+	
 	pick_new_state()
 
 func update_animation_parameters(move_input : Vector2):
