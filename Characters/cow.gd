@@ -5,6 +5,7 @@ enum COW_STATE { IDLE, WALK }
 @export var move_speed : float = 20
 @export var idle_time : float = 5
 @export var walk_time : float = 2
+@export var dialogue_key: String = "greet_farmer"
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -49,3 +50,7 @@ func pick_new_state():
 
 func _on_timer_timeout() -> void:
 	pick_new_state()
+
+func _on_body_entered(body):
+	# show 'Press E fker' hint
+	pass

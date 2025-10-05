@@ -1,12 +1,38 @@
 {
-	"chicken": [
-		"sybau twin",
-		"you are hella chopped",
-		"impale urself richard"
-	],
-	"cow": [
-		"pbqt",
-		"it meant please be quiet twin",
-		"six seven"
+  "greet_farmer": {
+	"nodes": [
+	  {
+		"id": "start",
+		"speaker": "Leah",
+		"portrait": "res://Assets/Portraits/guy_A_happy.png",
+		"text": "Oh! Hello there. I didn't expect visitors this early.",
+		"next": "ask_help"
+	  },
+	  {
+		"id": "ask_help",
+		"speaker": "Leah",
+		"portrait": "res://Assets/Portraits/guy_A_happy.png",
+		"text": "Do you want to help me collect some stones or just chat?",
+		"choices": [
+		  { "text": "Help collect stones", "goto": "help_yes" },
+		  { "text": "Just chat", "goto": "chat" }
+		]
+	  },
+	  {
+		"id": "help_yes",
+		"speaker": "Leah",
+		"portrait": "res://Assets/Portraits/guy_A_happy.png",
+		"text": "Amazing! I could use the company. Meet me by the stump.",
+		"next": null,
+		"action": "start_quest:stones"
+	  },
+	  {
+		"id": "chat",
+		"speaker": "Leah",
+		"portrait": "res://Assets/Portraits/guy_A_happy.png",
+		"text": "I love watching the light through the trees... sometimes I forget to eat.",
+		"next": null
+	  }
 	]
+  }
 }

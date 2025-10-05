@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+@onready var interact_area: Area2D = $InteractArea
 
 
 func _ready():
@@ -29,8 +30,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	# If near NPC and player presses interact
-	#if Input.is_action_just_pressed("accept") and current_npc:
-		#DialogueManager.start_dialogue(current_npc.npc_id)
+	if Input.is_action_just_pressed("ui_accept") and current_npc:
+		DialogueManager.start_dialogue(current_npc.npc_id)
 	
 	pick_new_state()
 

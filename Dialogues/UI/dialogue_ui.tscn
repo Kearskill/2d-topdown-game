@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba6r3q1lrddyc"]
+
+[ext_resource type="Script" uid="uid://dle4vfegxu1rv" path="res://Dialogues/UI/dialogue_ui.gd" id="1_q7puq"]
+
+[node name="DialogueUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_q7puq")
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Portrait" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="SpeakerLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextLabel" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
