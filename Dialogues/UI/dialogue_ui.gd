@@ -18,6 +18,7 @@ var _skip_next := false
 func _ready() -> void:
 	visible = false
 	text_label.clear()
+	dialogue_manager.ui = self
 
 # public entrypoint
 func play_nodes(nodes: Array, finished_callback: Callable = Callable()) -> void:
@@ -96,7 +97,7 @@ func _show_node(node: Dictionary) -> void:
 				choices_container.queue_free() # clear choices
 				choice_selected.emit(node["_choice_result"])
 			)
-		var choice_made = await choice_selected
+		var _choice_made = await choice_selected
 	else:
 		await _wait_for_continue()
 

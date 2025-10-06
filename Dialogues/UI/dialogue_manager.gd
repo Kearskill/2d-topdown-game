@@ -8,7 +8,7 @@ var ui: DialogueUI
 
 func _ready() -> void:
 	load_dialogues()
-	ui = get_tree().root.get_node("Root/DialogueUI") # adapt to your scene
+	ui = get_tree().root.get_node("Game_level/CanvasLayer/DialogueUI") # adapt to your scene res://Dialogues/UI/
 	if ui:
 		ui.node_action.connect(_on_node_action)
 

@@ -37,7 +37,7 @@ func _physics_process(_delta):
 	
 	pick_new_state()
 	
-	raycast.target_position = facing_direction * 16 # 16 is distance
+	raycast.target_position = facing_direction * 160 # 16 is distance
 	if Input.is_action_just_pressed("ui_accept"):
 		_check_npc_interaction()
 
@@ -60,4 +60,4 @@ func _check_npc_interaction():
 		if collider.is_in_group("NPC"):
 			current_npc = collider
 			print("Talking to NPC: ", current_npc.name)
-			
+			dialogue_manager.play(current_npc.npc_id)

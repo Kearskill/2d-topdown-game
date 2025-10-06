@@ -263,3 +263,4 @@ parameters/Walk/blend_position = Vector2(-0.2551834, 0.20224214)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
+collide_with_areas = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dujmwh03xo5sx"]
+[gd_scene load_steps=20 format=3 uid="uid://dujmwh03xo5sx"]
 
 [ext_resource type="PackedScene" uid="uid://535eswpfbvab" path="res://Characters/player_cat.tscn" id="1_up8ek"]
 [ext_resource type="Texture2D" uid="uid://biawudx44xy5u" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="2_wlvk4"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://5vy7q57duw01" path="res://Characters/cow.tscn" id="8_afl82"]
 [ext_resource type="PackedScene" uid="uid://s7qxed1hvlk2" path="res://Objects/chest.tscn" id="9_ese5x"]
 [ext_resource type="PackedScene" uid="uid://b064e7jgus1o" path="res://Objects/bed.tscn" id="10_3ty5n"]
+[ext_resource type="PackedScene" uid="uid://c86npd1tul6pl" path="res://Characters/npc.tscn" id="11_bskef"]
+[ext_resource type="PackedScene" uid="uid://ba6r3q1lrddyc" path="res://Dialogues/UI/dialogue_ui.tscn" id="12_ds5vk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmi5p"]
 texture = ExtResource("2_wlvk4")
@@ -352,3 +354,9 @@ position = Vector2(54, 94)
 
 [node name="Bed" parent="." instance=ExtResource("10_3ty5n")]
 position = Vector2(222, 229)
+
+[node name="NPC" parent="." instance=ExtResource("11_bskef")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueUI" parent="CanvasLayer" instance=ExtResource("12_ds5vk")]

@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://bmvo1xjuo008o" path="res://Characters/cow.gd" id="1_o34qh"]
 [ext_resource type="Texture2D" uid="uid://bhc4y45ysc2fs" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_6sm7e"]
 
+[sub_resource type="Animation" id="Animation_2lff8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_tk8lp"]
 resource_name = "idle_right"
 length = 0.8
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_2lff8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_q563c"]

@@ -34,5 +34,15 @@
 		"next": null
 	  }
 	]
+  },
+ "npc_default": {
+	"nodes": [
+	  {
+		"id": "start",
+		"speaker": "Cat NPC",
+		"text": "Meow... You talked to me!",
+		"next": null
+	  }
+	]
   }
 }
